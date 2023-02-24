@@ -1,0 +1,30 @@
+<h1>Détails de la liste <%= @list.name %></h1>
+<div class="d-flex justify-content-between p-3">
+  <%= link_to new_list_bookmark_path(@list) do %>
+    <i class="show-icon fa-solid fa-plus"></i>
+  <% end %>
+
+  <%= link_to lists_path do %>
+    <i class="show-icon fa-solid fa-backward"></i>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="row d-flex justify-content-between">
+    <% @list.movies.each do |movie| %>
+    <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+        <div class="card-trip col-4 p-1">
+          <img src="<%= movie.poster_url %>"  />
+          <div class="card-trip-infos">
+            <div>
+              <h2> <%= movie.title %> </h2>
+              <p><%= movie.overview %></p>
+                <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                  <i class="show-icon fa-solid fa-minus"></i>
+                <% end %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

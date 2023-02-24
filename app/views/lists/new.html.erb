@@ -1,0 +1,10 @@
+<h1>Créer une liste</h1>
+
+  <%= simple_form_for (@list), html: { multipart: true } do |f| %>
+    <%= f.input :name %>
+    <%= f.input :image_url %>
+    <%= f.submit "Submit list", class: "btn btn-danger" %>
+  <% end %>
+
+<%= link_to "retour à la liste", lists_path %>
+

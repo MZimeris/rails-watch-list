@@ -1,0 +1,22 @@
+<h1>Toutes les listes</h1>
+
+
+
+<div class="container">
+  <div class="row d-flex justify-content-between">
+    <% @lists.each do |list| %>
+      <%= link_to list_path(list), class:"text-decoration-none" do%>
+        <div class="card-trip col-4 p-1">
+          <%= image_tag(list.image) %>
+          <div class="card-trip-infos">
+            <div>
+              <h2> <%= list.name %> </h2>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to "ajouter une liste",new_list_path %>
